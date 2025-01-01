@@ -1,4 +1,4 @@
-import Tags from "./Tags";
+import Tag from "./Tag";
 
 const ProfileBody = () => {
   return (
@@ -10,7 +10,29 @@ const ProfileBody = () => {
           workings, I like to play games & Study world events and Poltics
         </p>
       </div>
-      <Tags />
+      <div className="grid grid-flow-col grid-rows-2 gap-1 p-1 font-bold">
+        <Tag
+          css="rounded-md bg-blue-500"
+          emoji={String.fromCodePoint(128077)}
+          text="React"
+        />
+        <Tag
+          css="rounded-md bg-green-700"
+          emoji={String.fromCodePoint(129302)}
+          text="Virtualization"
+        />
+        <Tag
+          css="rounded-md  bg-yellow-600"
+          emoji={String.fromCodePoint(128077)}
+          text="Javascript"
+        />
+
+        <Tag
+          css="rounded-md bg-red-600"
+          emoji={String.fromCodePoint(9889)}
+          text="Self-Hosting"
+        />
+      </div>
     </div>
   );
 };
