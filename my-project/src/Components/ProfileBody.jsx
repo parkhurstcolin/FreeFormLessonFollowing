@@ -1,4 +1,5 @@
-import Tag from "./Tag";
+import Tag from "./Tags/Tag";
+import tagsData from "./Tags/tagsData";
 
 const ProfileBody = () => {
   return (
@@ -11,27 +12,9 @@ const ProfileBody = () => {
         </p>
       </div>
       <div className="grid grid-flow-col grid-rows-2 gap-1 p-1 font-bold">
-        <Tag
-          css="rounded-md bg-blue-500"
-          emoji={String.fromCodePoint(128077)}
-          text="React"
-        />
-        <Tag
-          css="rounded-md bg-green-700"
-          emoji={String.fromCodePoint(129302)}
-          text="Virtualization"
-        />
-        <Tag
-          css="rounded-md  bg-yellow-600"
-          emoji={String.fromCodePoint(128077)}
-          text="Javascript"
-        />
-
-        <Tag
-          css="rounded-md bg-red-600"
-          emoji={String.fromCodePoint(9889)}
-          text="Self-Hosting"
-        />
+        {tagsData.map((tag) => (
+          <Tag tagObj={tag} key={tag.skill} />
+        ))}
       </div>
     </div>
   );
