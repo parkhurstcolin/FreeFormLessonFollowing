@@ -1,46 +1,10 @@
 import { useState } from "react";
 
 const App = () => {
-  let time = new Date().toLocaleDateString();
-  const [day, setDay] = useState(time);
   const [step, setStep] = useState(0);
   const [count, setCount] = useState(0);
-
-  function changeDate() {
-    let thirtyOneMonths = [1, 3, 5, 6, 8, 10, 12];
-    time = time.split("/");
-    let day = count == 1 ? time[1] : Number(time[1]) + Number(step * count);
-    let month = time[0];
-    while (day > 28) {
-      if (thirtyOneMonths.includes(month)) {
-        if (day > 31) {
-          day -= 31;
-          month++;
-        }
-      } else if (month == 2) {
-        if (day > 28) {
-          day -= 28;
-          month++;
-        }
-      } else {
-        day -= 30;
-        month++;
-      }
-    }
-    time[0] = month;
-    time[1] = day;
-    time = time.join("/");
-    setDay(time);
-  }
-
-  function increaseCounter() {
-    changeDate();
-    setCount(count + 1);
-  }
-  function decreaseCounter() {
-    changeDate();
-    setCount(count - 1);
-  }
+  let time = new Date();
+  time.setDate(time.getDate() + count * step);
 
   return (
     <div className="md:container ">
@@ -62,21 +26,26 @@ const App = () => {
       <div className="flex">
         <button
           className="m-1 px-2 rounded-sm bg-red-500"
-          onClick={() => decreaseCounter()}
+          onClick={() => setCount((c) => c - 1)}
         >
           -
         </button>
         <p className="m-1 p-1 rounded-sm bg-slate-300">Count: {count}</p>
         <button
           className="m-1 px-2 rounded-sm bg-green-500"
-          onClick={() => increaseCounter()}
+          onClick={() => setCount((c) => c + 1)}
         >
           +
         </button>
       </div>
-      <div className="p-1 m-1 rounded-sm bg-slate-300 w-min ">
-        <p>{day}</p>
-      </div>
+      <span>
+        {count === 0
+          ? "Today is "
+          : count * step > 0
+          ? `${count * step} days from today is`
+          : `${Math.abs(count * step)} days ago is`}
+      </span>
+      <p>{time.toDateString()}</p>
     </div>
   );
 };
