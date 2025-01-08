@@ -17,6 +17,7 @@ const App = () => {
         <button
           className="m-1 px-2 rounded-sm bg-red-500"
           onClick={() => setStep(step - 1)}
+          disabled={step == 1}
         >
           -
         </button>
@@ -33,6 +34,7 @@ const App = () => {
         <button
           className="m-1 px-2 rounded-sm bg-green-500"
           onClick={() => setStep(step + 1)}
+          disabled={step == 10}
         >
           +
         </button>
