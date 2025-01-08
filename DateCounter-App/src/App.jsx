@@ -30,7 +30,12 @@ const App = () => {
         >
           -
         </button>
-        <p className="m-1 p-1 rounded-sm bg-slate-300">Count: {count}</p>
+        <input
+          className="m-1 p-1 rounded-sm bg-slate-300"
+          onChange={() => setCount(event.target.value)}
+        >
+          {}
+        </input>
         <button
           className="m-1 px-2 rounded-sm bg-green-500"
           onClick={() => setCount((c) => c + 1)}
@@ -39,7 +44,7 @@ const App = () => {
         </button>
       </div>
       <span>
-        {count === 0
+        {(count && step === 0) || count === 0
           ? "Today is "
           : count * step > 0
           ? `${count * step} days from today is`
