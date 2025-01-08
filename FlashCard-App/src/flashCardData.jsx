@@ -27,7 +27,7 @@ const flashCardData = [
   {
     id: 415626324566,
     question:
-      "What do we call an input element that is completely synchonised with state?",
+      "What is an input element that is completely synchonised with state?",
     answer: "Controlled element",
   },
 ];
